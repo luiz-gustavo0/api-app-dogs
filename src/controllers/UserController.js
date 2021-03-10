@@ -1,5 +1,6 @@
 const User = require('../models/User')
 const Yup = require('yup')
+const AppError = require('../errors/AppError')
 
 class UserController {
   async create(request, response) {
@@ -10,7 +11,7 @@ class UserController {
     })
 
     if (userExists) {
-      return response.status(409).jsoj({ error: 'Usuário já cadastrado.' })
+      throw new AppError(409, 'Usuário já cadastrado.')
     }
 
     const schema = Yup.object()
@@ -31,7 +32,7 @@ class UserController {
 
       return response.status(201).json({ user: { id, name, email } })
     } catch (err) {
-      return response.status(400).json(err)
+      throw new AppError(400, err)
     }
   }
 }

@@ -1,3 +1,4 @@
+const AppError = require('../errors/AppError')
 const Coment = require('../models/Coment')
 const Post = require('../models/Post')
 
@@ -6,16 +7,14 @@ class ComentController {
     try {
       const { description } = request.body
       if (!description) {
-        return response
-          .status(400)
-          .json({ message: 'E necessario uma descrição' })
+        throw new AppError(400, 'E necessario uma descrição')
       }
 
       const { post_id } = request.params
       const post = await Post.findByPk(post_id)
 
       if (!post) {
-        return response.status(400).json({ message: 'Post não encontrado' })
+        throw new AppError(400, 'Post não encontrado')
       }
 
       const comment = await Coment.create({
@@ -26,7 +25,7 @@ class ComentController {
 
       return response.status(201).json(comment)
     } catch (err) {
-      return response.status(400).json(err)
+      throw new AppError(400, err)
     }
   }
 }

@@ -1,4 +1,5 @@
 const Yup = require('yup')
+const AppError = require('../errors/AppError')
 const Post = require('../models/Post')
 
 class PostController {
@@ -22,9 +23,7 @@ class PostController {
     const file = request.file
 
     if (!file) {
-      return response
-        .status(400)
-        .json({ message: 'O campo de imagem é obrigatorio' })
+      throw new AppError(400, 'O campo de imagem é obrigatorio')
     }
 
     const schema = Yup.object().shape({
@@ -47,7 +46,7 @@ class PostController {
 
       return response.status(201).json(post)
     } catch (err) {
-      return response.status(400).json(err)
+      throw new AppError(400, err)
     }
   }
 }

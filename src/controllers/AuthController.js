@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken')
 const User = require('../models/User')
+const AppError = require('../errors/AppError')
 
 const authConfig = require('../config/auth')
 
@@ -10,11 +11,11 @@ class AuthController {
     const user = await User.findOne({ where: { email } })
 
     if (!user) {
-      return response.status(401).json({ error: 'Not Authorized' })
+      throw new AppError(401, 'Not Authorized')
     }
 
     if (!(await user.checkPassword(password))) {
-      return response.status(401).json({ error: 'Email ou senha inválidos.' })
+      throw new AppError(401, 'Email ou senha inválidos')
     }
 
     const { id, name } = user
