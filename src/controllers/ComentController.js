@@ -41,6 +41,22 @@ class ComentController {
       return response.status(400).json(err)
     }
   }
+
+  async remove(request, response) {
+    const comment_id = request.params.id
+
+    try {
+      const comment = await Coment.findByPk(comment_id)
+
+      if (!comment) throw new AppError(400, 'Comentário não encontrado')
+
+      await comment.destroy()
+
+      return response.send()
+    } catch (err) {
+      return response.status(400).json(err)
+    }
+  }
 }
 
 module.exports = new ComentController()

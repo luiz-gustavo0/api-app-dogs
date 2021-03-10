@@ -8,8 +8,6 @@ class Post extends Model {
         url: Sequelize.STRING,
         peso: Sequelize.DECIMAL(5, 2),
         idade: Sequelize.INTEGER,
-        author: Sequelize.VIRTUAL,
-        image: Sequelize.VIRTUAL,
       },
       {
         sequelize,

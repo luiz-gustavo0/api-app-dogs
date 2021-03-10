@@ -19,8 +19,11 @@ router.post('/login', AuthController.create)
 router.use(authMiddleware)
 router.post('/posts', upload.single('file'), PostController.create)
 router.get('/posts', PostController.index)
+router.get('/posts/:id', PostController.show)
+router.delete('/posts/:id', PostController.remove)
 
 router.post('/comments/:post_id', ComentController.create)
 router.get('/comments', ComentController.index)
+router.delete('/comments/:id', ComentController.remove)
 
 module.exports = router
