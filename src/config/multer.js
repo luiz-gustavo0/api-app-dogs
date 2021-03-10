@@ -7,7 +7,7 @@ const s3 = new aws.S3()
 module.exports = {
   storage: multerS3({
     s3: s3,
-    bucket: 'photo-upload-api-dogs',
+    bucket: process.env.AWS_BUCKET,
     contentType: multerS3.AUTO_CONTENT_TYPE,
     acl: 'public-read',
     key: (req, file, cb) => {

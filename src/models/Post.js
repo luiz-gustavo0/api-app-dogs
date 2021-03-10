@@ -5,10 +5,11 @@ class Post extends Model {
     super.init(
       {
         title: Sequelize.STRING,
-        image: Sequelize.STRING,
+        url: Sequelize.STRING,
         peso: Sequelize.DECIMAL(2, 2),
         idade: Sequelize.INTEGER,
         author: Sequelize.VIRTUAL,
+        image: Sequelize.VIRTUAL,
       },
       {
         sequelize,

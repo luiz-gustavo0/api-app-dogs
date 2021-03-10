@@ -13,12 +13,12 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      image: {
+      url: {
         type: Sequelize.STRING,
         allowNull: false,
       },
       peso: {
-        type: Sequelize.DECIMAL(2, 2),
+        type: Sequelize.DECIMAL(5, 2),
         allowNull: false,
       },
       idade: {
