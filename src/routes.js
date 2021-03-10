@@ -21,5 +21,6 @@ router.post('/posts', upload.single('file'), PostController.create)
 router.get('/posts', PostController.index)
 
 router.post('/comments/:post_id', ComentController.create)
+router.get('/comments', ComentController.index)
 
 module.exports = router

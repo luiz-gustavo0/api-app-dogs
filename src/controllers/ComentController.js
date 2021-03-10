@@ -3,6 +3,19 @@ const Coment = require('../models/Coment')
 const Post = require('../models/Post')
 
 class ComentController {
+  async index(request, response) {
+    const comments = await Coment.findAll({
+      include: [
+        {
+          association: 'user',
+          attributes: ['name'],
+        },
+      ],
+    })
+
+    return response.json(comments)
+  }
+
   async create(request, response) {
     try {
       const { description } = request.body

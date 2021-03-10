@@ -27,6 +27,11 @@ class User extends Model {
   async checkPassword(password) {
     return await bcrypt.compare(password, this.password_hash)
   }
+
+  static associate(models) {
+    this.hasMany(models.Post, { foreignKey: 'user_id', as: 'posts' })
+    this.hasMany(models.Coment, { foreignKey: 'user_id', as: 'comments' })
+  }
 }
 
 module.exports = User

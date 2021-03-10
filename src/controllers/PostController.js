@@ -10,8 +10,18 @@ class PostController {
       offset: (page - 1) * 20,
       include: [
         {
+          association: 'user',
+          attributes: ['name', 'email'],
+        },
+        {
           association: 'coments',
           attributes: ['id', 'description'],
+          include: [
+            {
+              association: 'user',
+              attributes: ['name'],
+            },
+          ],
         },
       ],
     })
