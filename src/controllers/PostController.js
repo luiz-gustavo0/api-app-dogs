@@ -7,6 +7,12 @@ class PostController {
     const posts = await Post.findAll({
       limit: 20,
       offset: (page - 1) * 20,
+      include: [
+        {
+          association: 'coments',
+          attributes: ['id', 'description'],
+        },
+      ],
     })
 
     return response.json(posts)
