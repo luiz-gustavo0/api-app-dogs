@@ -6,7 +6,7 @@ class Post extends Model {
       {
         title: Sequelize.STRING,
         url: Sequelize.STRING,
-        peso: Sequelize.DECIMAL(2, 2),
+        peso: Sequelize.DECIMAL(5, 2),
         idade: Sequelize.INTEGER,
         author: Sequelize.VIRTUAL,
         image: Sequelize.VIRTUAL,
@@ -21,6 +21,7 @@ class Post extends Model {
 
   static associate(models) {
     this.belongsTo(models.User, { foreignKey: 'user_id', as: 'user' })
+    this.hasMany(models.Coment, { foreignKey: 'post_id', as: 'coments' })
   }
 }
 
