@@ -1,7 +1,7 @@
 require('dotenv/config')
 const express = require('express')
 const morgan = require('morgan')
-const AppError = require('./errors/AppErros')
+const AppError = require('./errors/AppError')
 const router = require('./routes')
 
 require('./database')

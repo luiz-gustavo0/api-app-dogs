@@ -4,25 +4,25 @@ const AppError = require('../errors/AppError')
 
 class UserController {
   async create(request, response) {
-    const userExists = await User.findOne({
-      where: {
-        email: request.body.email,
-      },
-    })
-
-    if (userExists) {
-      throw new AppError(409, 'Usuário já cadastrado.')
-    }
-
-    const schema = Yup.object()
-      .shape({
-        name: Yup.string().required(),
-        email: Yup.string().email().required(),
-        password: Yup.string().required().min(8),
-      })
-      .noUnknown()
-
     try {
+      const userExists = await User.findOne({
+        where: {
+          email: request.body.email,
+        },
+      })
+
+      if (userExists) {
+        throw new AppError(409, 'Usuário já cadastrado.')
+      }
+
+      const schema = Yup.object()
+        .shape({
+          name: Yup.string().required(),
+          email: Yup.string().email().required(),
+          password: Yup.string().required().min(8),
+        })
+        .noUnknown()
+
       const validfields = await schema.validate(request.body, {
         abortEarly: false,
         stripUnknown: true,
@@ -32,7 +32,7 @@ class UserController {
 
       return response.status(201).json({ user: { id, name, email } })
     } catch (err) {
-      throw new AppError(400, err)
+      return response.status(400).json(err)
     }
   }
 }

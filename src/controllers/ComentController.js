@@ -25,7 +25,7 @@ class ComentController {
 
       return response.status(201).json(comment)
     } catch (err) {
-      throw new AppError(400, err)
+      return response.status(400).json(err)
     }
   }
 }
