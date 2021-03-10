@@ -2,6 +2,16 @@ const Yup = require('yup')
 const Post = require('../models/Post')
 
 class PostController {
+  async index(request, response) {
+    const { page = 1 } = request.query
+    const posts = await Post.findAll({
+      limit: 20,
+      offset: (page - 1) * 20,
+    })
+
+    return response.json(posts)
+  }
+
   async create(request, response) {
     const file = request.file
 

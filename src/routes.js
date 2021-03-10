@@ -11,5 +11,6 @@ const upload = multer(multerConfig)
 
 router.post('/users', UserController.create)
 router.post('/posts', upload.single('file'), PostController.create)
+router.get('/posts', PostController.index)
 
 module.exports = router
