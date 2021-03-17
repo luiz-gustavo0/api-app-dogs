@@ -3,6 +3,20 @@ const Yup = require('yup')
 const AppError = require('../errors/AppError')
 
 class UserController {
+  async show(request, response) {
+    const user_id = request.userId
+    try {
+      const user = await User.findByPk(user_id, {
+        attributes: ['id', 'name', 'email'],
+      })
+      if (!user) throw new AppError(400, 'Usuário não encontrado.')
+
+      return response.json(user)
+    } catch (err) {
+      return response.status(401).json(err)
+    }
+  }
+
   async create(request, response) {
     try {
       const userExists = await User.findOne({

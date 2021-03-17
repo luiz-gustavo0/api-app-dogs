@@ -6,9 +6,8 @@ class PostController {
   async index(request, response) {
     const { page = 1 } = request.query
     const posts = await Post.findAll({
-      limit: 20,
+      limit: 10,
       offset: (page - 1) * 20,
-      // attributes: ['title', 'idade', 'peso', 'url', 'user_id', 'visualizacoes'],
       include: [
         {
           association: 'user',
