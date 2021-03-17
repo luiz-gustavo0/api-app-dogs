@@ -20,7 +20,7 @@
 ### Clonar o repositório
 
 ```
-$ git clone git@github.com:luiz-gustavo0/app-dogs-react.git
+$ git clone git@github.com:luiz-gustavo0/api-app-dogs.git
 ```
 
 ### Entrar no diretorio
