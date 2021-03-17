@@ -11,10 +11,6 @@
 - Multer-S3
 - Aws-sdk
 
-<!-- ## Live Demo -->
-
-<!-- [Live Demo Link](https://livedemo.com) -->
-
 ## Como baixar o projeto
 
 ### Clonar o repositório
@@ -26,7 +22,7 @@ $ git clone git@github.com:luiz-gustavo0/app-dogs-react.git
 ### Entrar no diretorio
 
 ```
-cd app-dogs-react
+cd api-app-dogs
 ```
 
 ### Instalar as dependencias
@@ -38,7 +34,7 @@ $ yarn install
 ### Iniciar o projeto
 
 ```
-$ yarn start
+$ yarn dev
 ```
 
 ## Author
