@@ -13,14 +13,14 @@ const router = express.Router()
 
 const upload = multer(multerConfig)
 
-router.post('/users', UserController.create)
 router.post('/login', AuthController.create)
+
+router.post('/users', UserController.create)
 router.get('/posts', PostController.index)
 router.get('/posts/:id', PostController.show)
 
 router.use(authMiddleware)
 router.get('/users', UserController.show)
-
 router.post('/posts', upload.single('file'), PostController.create)
 router.delete('/posts/:id', PostController.remove)
 
