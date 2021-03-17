@@ -1,6 +1,6 @@
 # Api Rest
 
-> Api Rest desenvolvida para o projeto [App Dogs](https://github.com/luiz-gustavo0/app-dogs-react)
+Api Rest desenvolvida para o projeto [App Dogs](https://github.com/luiz-gustavo0/app-dogs-react)
 
 ## Tecnologias utilizadas
 
